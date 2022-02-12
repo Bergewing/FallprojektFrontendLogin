@@ -34,7 +34,23 @@ const SignIn = (e) => {
         minDiv.appendChild(felmeddelande)
     }
     else {
-        //Om json är komplett gör min fetch här
+        //Om json är komplett gör min fetch här   Få denna att funka, jag vill ha tillbaka en body med true eller false innan jag fortsätter med nästa del.
+        fetch('https://localhost:7073/api/User/user', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: jsonStringObj
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+
+
         //I min fetch ny if sats som skickar en append child som rad 42 med meddelande "Fel lösen eller username" 
         //eller redirect inloggad sida
 
