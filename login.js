@@ -3,7 +3,7 @@ const registerButton = document.getElementById('register')
 
 const RegisterPage = () => {
   console.log('Button was clicked')
-  window.location.replace("http://127.0.0.1:5500/Fallprojekt/register.html");
+  window.location.replace("localhost:5501/Fallprojekt/register.html");
 }
 
 registerButton.addEventListener('click', RegisterPage)
@@ -51,19 +51,20 @@ const SignIn = (e) => {
 
         console.log(resp.status)
         if (resp.status === 401) {
+          //I min fetch ny if sats som skickar en append child som rad 42 med meddelande "Fel lösen eller username" 
           console.log('No Success')
           minDiv.appendChild(noLogin)
         }
-        else {                //lägga till en ny else if för att fånga andra fel typ 500??
+        else {                
+        //eller redirect inloggad sida
           console.log('Success')
           return resp.json()
           .then(data => console.log(data))
         }
+        //lägga till en ny else if för att fånga andra fel typ 500??
       })
 
     
-    //I min fetch ny if sats som skickar en append child som rad 42 med meddelande "Fel lösen eller username" 
-    //eller redirect inloggad sida
 
   }
 }
